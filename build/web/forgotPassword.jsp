@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
-    Created on : Nov 17, 2023, 10:03:39 PM
-    Author     : lap
+    Document   : forgotPassword
+    Created on : Dec 30, 2023, 9:33:05 PM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,10 +21,10 @@
         <link rel="stylesheet" href="assets/css/base.css" />
         <link rel="stylesheet" href="assets/css/login.css" />
 
-        <title>Login</title>
+        <title>Forgot Password</title>
     </head>
     <body>
-        <div class="login">
+        <div class="forgotPassword">
             <div class="content">
                 <div class="content__header">
                     <div class="content__logo">
@@ -32,7 +32,7 @@
                     </div>
                     <h1>Welcome to Furnish</h1>
                     <div class="content__desc">
-                        Sign in to continue
+                        Please enter the Username to continue!
                     </div>
                 </div>
 
@@ -41,25 +41,12 @@
                 </c:if>
 
                 <div class="content__body">
-                    <form action="login" method="post">
+                    <form action="forgotpassword" method="post">
                         <div class="form-group">
                             <input type="text" id="username" name="username" required placeholder="Username" />
                         </div>
-                        <div class="form-group">
-                            <input type="password" id="password" name="password" required placeholder="Password" />
-                        </div>
-                        <button type="submit">Sign In</button>
+                        <button type="submit">Next</button>
                     </form>
-                </div>
-
-                <div class="content__footer">
-                    <div>    
-                        <a href="forgotpassword">Forgot Password</a>
-                    </div>
-                    <span>
-                        Don’t have an account?
-                        <a href="signup">Register</a>
-                    </span>
                 </div>
             </div>
         </div>

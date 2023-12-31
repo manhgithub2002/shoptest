@@ -85,6 +85,18 @@
         <servlet-name>OrderCompleteServlet</servlet-name>
         <servlet-class>controller.OrderCompleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>controller.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <servlet-class>controller.ConfirmEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>controller.ResetPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -148,6 +160,18 @@
     <servlet-mapping>
         <servlet-name>OrderCompleteServlet</servlet-name>
         <url-pattern>/complete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/forgotpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <url-pattern>/confirmemail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

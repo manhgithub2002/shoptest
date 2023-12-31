@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
-    Created on : Nov 17, 2023, 10:03:39 PM
-    Author     : lap
+    Document   : resetPassword
+    Created on : Dec 31, 2023, 4:27:20 PM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,45 +21,31 @@
         <link rel="stylesheet" href="assets/css/base.css" />
         <link rel="stylesheet" href="assets/css/login.css" />
 
-        <title>Login</title>
+        <title>New Password</title>
     </head>
     <body>
-        <div class="login">
+        <div class="resetpassword">
             <div class="content">
                 <div class="content__header">
                     <div class="content__logo">
                         <img src="assets/image/logo_sss.png" alt="" />
                     </div>
                     <h1>Welcome to Furnish</h1>
+                    <c:set var="mk" value="${requestScope.mk}" />
                     <div class="content__desc">
-                        Sign in to continue
+                        New password!
                     </div>
                 </div>
 
-                <c:if test="${error != null}">
-                    <div class="error">${error}</div>
-                </c:if>
 
                 <div class="content__body">
-                    <form action="login" method="post">
-                        <div class="form-group">
-                            <input type="text" id="username" name="username" required placeholder="Username" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="password" name="password" required placeholder="Password" />
-                        </div>
-                        <button type="submit">Sign In</button>
-                    </form>
-                </div>
-
-                <div class="content__footer">
-                    <div>    
-                        <a href="forgotpassword">Forgot Password</a>
+                    <span>${mk}</span>
+                    
+                    <div>
+                        <a href="login">
+                            Login
+                        </a>
                     </div>
-                    <span>
-                        Don’t have an account?
-                        <a href="signup">Register</a>
-                    </span>
                 </div>
             </div>
         </div>

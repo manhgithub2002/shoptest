@@ -88,6 +88,54 @@ public class UserDAO extends DBContext{
         return null;
     }
     
+    public String getEmailByUsername(String username){
+        String sql = "select * from user where username = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                String id = rs.getString("ID");
+                String username_DB = rs.getString("username");
+                String password_DB = rs.getString("password");
+                String fullname = rs.getString("fullname");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String phone = rs.getString("phone");
+                int role = rs.getInt("role");
+                User x = new User(id, username_DB, password_DB, fullname, email, address, phone, role);
+                return x.getEmail();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public User getUserByUsername(String username){
+        String sql = "select * from user where username = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                String id = rs.getString("ID");
+                String username_DB = rs.getString("username");
+                String password_DB = rs.getString("password");
+                String fullname = rs.getString("fullname");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String phone = rs.getString("phone");
+                int role = rs.getInt("role");
+                User x = new User(id, username_DB, password_DB, fullname, email, address, phone, role);
+                return x;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public boolean existUser(String username){
         String sql = "select * from user where username = ?";
         try {

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
-    Created on : Nov 17, 2023, 10:03:39 PM
-    Author     : lap
+    Document   : confirmEmail
+    Created on : Dec 31, 2023, 10:55:57 AM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,19 +21,23 @@
         <link rel="stylesheet" href="assets/css/base.css" />
         <link rel="stylesheet" href="assets/css/login.css" />
 
-        <title>Login</title>
+        <title>Confirm Email</title>
     </head>
     <body>
-        <div class="login">
+        <div class="confirmemail">
             <div class="content">
                 <div class="content__header">
                     <div class="content__logo">
                         <img src="assets/image/logo_sss.png" alt="" />
                     </div>
                     <h1>Welcome to Furnish</h1>
-                    <div class="content__desc">
-                        Sign in to continue
-                    </div>
+                    <c:set var="email" value="${requestScope.email}" />
+                    <c:if test="${email != null}">
+                        <div class="content__desc">Please enter the ${email} to continue!</div>
+                    </c:if>
+                    <c:if test="${email == null}">
+                        <div class="content__desc">Please enter the ${maskedEmail} to continue!</div>
+                    </c:if>
                 </div>
 
                 <c:if test="${error != null}">
@@ -41,27 +45,19 @@
                 </c:if>
 
                 <div class="content__body">
-                    <form action="login" method="post">
+                    <form action="confirmemail" method="get">
                         <div class="form-group">
-                            <input type="text" id="username" name="username" required placeholder="Username" />
+                            <input type="text" id="email" name="email" required placeholder="Email" />
+                            <input type="hidden" id="username" name="username" value="${requestScope.username}" />
+                            <input type="hidden" id="confirmEmail" name="confirmEmail" value="${requestScope.confirmEmail}" />
+                            <input type="hidden" id="maskedEmail" name="maskedEmail" value="${email}" />
                         </div>
-                        <div class="form-group">
-                            <input type="password" id="password" name="password" required placeholder="Password" />
-                        </div>
-                        <button type="submit">Sign In</button>
+                        
+                        <button type="submit">Next</button>
                     </form>
-                </div>
-
-                <div class="content__footer">
-                    <div>    
-                        <a href="forgotpassword">Forgot Password</a>
-                    </div>
-                    <span>
-                        Don’t have an account?
-                        <a href="signup">Register</a>
-                    </span>
                 </div>
             </div>
         </div>
     </body>
 </html>
+
