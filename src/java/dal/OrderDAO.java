@@ -7,6 +7,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.ChartData;
 import model.Order;
 import model.User;
 
@@ -130,4 +131,72 @@ public class OrderDAO extends DBContext{
             System.out.println(e);
         }
     }
+    
+    public double getTotalRevenueInCurrentMonth(){
+        String sql = "SELECT SUM(total) as total FROM `order` WHERE MONTH(orderDate) = MONTH(CURRENT_DATE())";
+        double total = -1;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                total = rs.getDouble("total");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return total;
+    }
+    
+    public double getRevenue(){
+        String sql = "SELECT SUM(total) as total FROM `order`";
+        double total = -1;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                total = rs.getDouble("total");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return total;
+    }
+    
+    public int getTotalItemsSoldInMonth(){
+        String sql = "SELECT SUM(orderitem.quantity) as total FROM `order` JOIN orderitem ON order.ID = orderitem.orderID WHERE MONTH(order.orderDate) = MONTH(CURRENT_DATE()) GROUP BY MONTH(order.orderDate)";
+        int total = -1;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                total = rs.getInt("total");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return total;
+    }
+    
+    public ArrayList<ChartData> getDailyTotal(int month){
+        String sql = "SELECT DAY(orderDate) as day, SUM(total) as total FROM `order` WHERE MONTH(orderDate) = MONTH(CURRENT_DATE()) GROUP BY DAY(orderDate)";
+        
+        ArrayList<ChartData> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()){
+                int day = rs.getInt("day");
+                double total = rs.getDouble("total");
+                
+                ChartData chartdata = new ChartData(day, total);
+                list.add(chartdata);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return list;
+    }
+    
 }

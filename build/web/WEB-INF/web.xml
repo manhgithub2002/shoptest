@@ -97,6 +97,10 @@
         <servlet-name>ResetPasswordServlet</servlet-name>
         <servlet-class>controller.ResetPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>controller.ReportServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -172,6 +176,10 @@
     <servlet-mapping>
         <servlet-name>ResetPasswordServlet</servlet-name>
         <url-pattern>/reset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -103,13 +103,13 @@ public class HomeFilter implements Filter {
 
 	doBeforeProcessing(request, response);
 	
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        String url = req.getServletPath();
-        
-        if(url.endsWith(".jsp")){
-            res.sendRedirect("home");
-        }
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        HttpServletResponse res = (HttpServletResponse) response;
+//        String url = req.getServletPath();
+//        
+//        if(url.endsWith(".jsp")){
+//            res.sendRedirect("home");
+//        }
         
 	Throwable problem = null;
 	try {

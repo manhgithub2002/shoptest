@@ -39,12 +39,16 @@
 
 
                 <div class="content__body">
-                    <span>${mk}</span>
+                    <div class="password" >
+                        <span>
+                          ${mk}  
+                        </span>
+                    </div>
                     
-                    <div>
-                        <a href="login">
-                            Login
-                        </a>
+                    <div class="resetpassword_a">
+                       <a href="login">
+                        Login
+                        </a> 
                     </div>
                 </div>
             </div>
