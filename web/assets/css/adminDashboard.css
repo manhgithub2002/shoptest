@@ -189,6 +189,10 @@ a {
   width: 100%;
 }
 
+.select__month {
+  margin-bottom: 20px;
+}
+
 .main__box {
   display: flex;
   justify-content: space-evenly;
@@ -209,6 +213,11 @@ a {
 .box__item h3 {
   text-align: center;
   margin: 0;
+}
+
+.canvas_header {
+  /* display: flex; */
+  justify-content: space-between;
 }
 .main__team {
   display: flex;

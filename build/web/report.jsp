@@ -125,9 +125,16 @@
         </div>
 
         <div class="canvas">
-          <h4>Revenue chart by day</h4>
+          <div class="canvas_header">
+            <h4>Revenue chart by day</h4>
+            <h4>
+              <a href="reportDetails">Details</a>
+            </h4>
+          </div>
+          
           <canvas id="myChart" style="height: 400px; width: 100%"></canvas>
         </div>
+      </div>
       </div>
     </div>
     <!-- main -->
@@ -135,7 +142,7 @@
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch("admin")
+      fetch("admin?month=-1")
         .then((response) => response.json())
         .then((data) => {
           const days = data.chartData.map((item) => item.day);

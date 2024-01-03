@@ -63,8 +63,11 @@ public class ReportServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         OrderDAO od = new OrderDAO();
         
+        //Get parameter
+        int month = Integer.parseInt(request.getParameter("month"));
+        
         //Get chart's data
-        List<ChartData> orderStats = od.getDailyTotal(1);
+        List<ChartData> orderStats = od.getDailyTotal(month);
    
         List<ChartData> allDays = new ArrayList<>();
         for (int day = 1; day <= 31; day++) {
@@ -82,20 +85,24 @@ public class ReportServlet extends HttpServlet {
         }
         
         //Get total revenue in month
-        double totalMonthRevenue = od.getTotalRevenueInCurrentMonth();
+        double totalMonthRevenue = od.getTotalRevenueInCurrentMonth(month);
         
         //Get total item sold
-        int totalItemSold = od.getTotalItemsSoldInMonth();
-        
-        //Get total revenue
-        double totalRevenue = od.getRevenue();
-        
+        int totalItemSold = od.getTotalItemsSoldInMonth(month);
         
         JSONObject resultObject = new JSONObject();
+        
         resultObject.put("monthTotal", totalMonthRevenue);
         resultObject.put("chartData", allDays);
         resultObject.put("totalItemSold", totalItemSold);
-        resultObject.put("totalRevenue", totalRevenue);
+        
+        if(month != -1){
+            double totalProfit = od.getProfitInMonth(month);
+            resultObject.put("totalProfit", totalProfit);
+        } else {
+            double totalRevenue = od.getRevenue();  
+            resultObject.put("totalRevenue", totalRevenue);
+        }
         
         out.println(resultObject.toString());
     } 
